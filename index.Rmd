@@ -1,12 +1,18 @@
 ---
-title: "PAC Influence on US Politics"
+title: "Foreign-Connected PAC Donation Influence on US Politics"
 description: |
-  Welcome to the website. I hope you enjoy it!
+  This website examines the influence of foreign-connected PAC (Political Action Comittee) donations on US politics and elections.
 site: distill::distill_website
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
+
+library(tidyverse)
+library(shiny)
+library(gganimate)
+library(ggthemes)
+library(rmarkdown)
 
 # Learn more about creating websites with Distill at:
 # https://rstudio.github.io/distill/website.html
@@ -15,4 +21,17 @@ knitr::opts_chunk$set(echo = FALSE)
 # https://rstudio.github.io/distill/publish_website.html#github-pages
 
 ```
+
+## PAC Donation Data Aggregated by Country and Year
+
+```{r table}
+combined_pac = read_csv("combined_pac.csv")
+paged_table(combined_pac)
+```
+
+
+
+
+
+
 

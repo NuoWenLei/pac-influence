@@ -1,0 +1,61 @@
+---
+title: "PAC Donations from Countries"
+description: |
+  Visualization of amount of donations changing over time.
+date: "`r Sys.Date()`"
+output: distill::distill_article
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Country Plot
+
+```{r country-plot}
+library(tidyverse)
+library(gganimate)
+library(ggthemes)
+
+# Get and format data as needed
+csv_data = read_csv("combined_pac.csv")
+year_cycles = seq(2000, 2020, by=2)
+country_list = list()
+for (year in year_cycles){
+  country_list = union(country_list, (csv_data %>% filter(year_cycle==year))$country)
+}
+for (cntry in country_list){
+  
+  for (year in year_cycles){
+    if (!(cntry %in% (csv_data %>% filter(year_cycle==year))$country)){
+      csv_data = csv_data %>% add_row(year_cycle=year,
+                                      country=cntry,
+                                      dems_sum=0.0,
+                                      repubs_sum=0.0,
+                                      total_sum=0.0)
+    }
+  }
+}
+
+anim_data <- csv_data %>% pivot_longer(cols=c(dems_sum, repubs_sum), names_to="party", values_to="amount") %>% mutate(president_party = case_when(
+  (year_cycle >= 2000 & year_cycle < 2008) ~ "Republican",
+  (year_cycle >= 2008 & year_cycle < 2016) ~ "Democrat",
+  (year_cycle >= 2016 & year_cycle < 2020) ~ "Republican",
+  year_cycle == 2020 ~ "Democrat"
+))
+
+anim <- ggplot(data=anim_data, mapping=aes(x=country, y=amount/100000, fill=party)) +
+  geom_col(position="dodge") +
+  labs(title="Year {closest_state}, party in office: {anim_data %>% filter(year_cycle == closest_state) %>% slice(1) %>% pull(president_party)}") +
+  transition_states(year_cycle, transition_length = 2, state_length = 1) +
+  theme_classic() +
+  theme(axis.text.x=element_text(angle = -90, hjust=0)) +
+  scale_fill_manual(values=c("blue", "red"),
+                    labels=c("Democrat", "Republican"))
+animate(anim, nframes=200)
+```
+
+
+
+
+

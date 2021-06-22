@@ -9,4 +9,6 @@ navbar:
       href: index.html
     - text: "About"
       href: about.html
+    - text: "PAC by Countries"
+      href: country_pac.html
 output: distill::distill_article
