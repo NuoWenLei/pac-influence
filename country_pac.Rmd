@@ -46,7 +46,11 @@ anim_data <- csv_data %>% pivot_longer(cols=c(dems_sum, repubs_sum), names_to="p
 
 anim <- ggplot(data=anim_data, mapping=aes(x=country, y=amount/100000, fill=party)) +
   geom_col(position="dodge") +
-  labs(title="Year {closest_state}, party in office: {anim_data %>% filter(year_cycle == closest_state) %>% slice(1) %>% pull(president_party)}") +
+  labs(title = "Country PAC Donations by Party",
+       subtitle="Year {closest_state}, party in office: {anim_data %>% filter(year_cycle == closest_state) %>% slice(1) %>% pull(president_party)}",
+       x = "Country",
+       y = "Donation Amount (by $100,000)",
+       fill = "Party") +
   transition_states(year_cycle, transition_length = 2, state_length = 1) +
   theme_classic() +
   theme(axis.text.x=element_text(angle = -90, hjust=0)) +

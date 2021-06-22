@@ -1,0 +1,20 @@
+---
+title: "Source A"
+description: |
+  Detailed notes for Source A
+output: distill::distill_article
+bibliography: bibliography.bib
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+Source A was from (OpenSecrets Foreign-Connected PACs)[https://www.opensecrets.org/political-action-committees-pacs/foreign-connected-pacs/2020].
+
+It lists all the foreign-connected company donations for PACs from 2000 to 2020.[@opensecretsPACs]
+
+
+
+
+

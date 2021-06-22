@@ -1,0 +1,71 @@
+---
+title: "Relationship between Donations and Party Division"
+output: distill::distill_article
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(tidyverse)
+library(shiny)
+library(gganimate)
+library(ggthemes)
+
+csv_data = read_csv("combined_pac.csv")
+anim_data = csv_data %>% mutate(president_party = case_when(
+  (year_cycle >= 2000 & year_cycle < 2008) ~ "Republican",
+  (year_cycle >= 2008 & year_cycle < 2016) ~ "Democrat",
+  (year_cycle >= 2016 & year_cycle < 2020) ~ "Republican",
+  year_cycle == 2020 ~ "Democrat"
+))
+
+house_senate_csv = csv_data %>%
+  group_by(year_cycle) %>%
+  summarize(dem_total = sum(dems_sum)/sum(total_sum),
+            repub_total = sum(repubs_sum)/sum(total_sum), .groups="drop") %>% 
+  pivot_longer(cols=c(dem_total, repub_total), names_to="position", values_to="value") %>% 
+  mutate(branch="Donations") %>% 
+  rename(year=year_cycle)
+house_senate_csv_1 = read_csv("house_senate.csv") %>%
+  mutate(democratic_senate=(democratic_senate_1/(democratic_senate_1 + republican_senate_1)),
+         republican_senate=(republican_senate_1/(democratic_senate_1 + republican_senate_1)),
+         democratic_house=(democratic_house_1/(democratic_house_1 + republican_house_1)),
+         republican_house=(republican_house_1/(democratic_house_1 + republican_house_1))) %>% 
+  select(-c(republican_house_1, democratic_house_1, republican_senate_1, democratic_senate_1)) %>% 
+  pivot_longer(cols=c(democratic_senate, republican_senate, democratic_house, republican_house), names_to="position", values_to="value") %>% 
+  mutate(branch=if_else(str_detect(position, "senate"), "Senate", "House"))
+
+house_senate_bound = bind_rows(house_senate_csv, house_senate_csv_1) %>% 
+  mutate(party=if_else(str_detect(position, "repub"),
+                       "Republican", "Democrat")) 
+
+```
+
+```{r house-senate-plot}
+
+house_senate_anim <- house_senate_bound %>% 
+  mutate(position=str_sub(position, 1, 2)) %>% ggplot(mapping=aes(x=position, y=value, fill=party)) + geom_col(position="dodge") +
+  facet_wrap(~branch) +
+  scale_fill_manual(values = c("blue", "red"), labels = c("Democrat", "Republican")) +
+  scale_x_discrete(labels=c("Democrat", "Republican")) + 
+  scale_y_continuous(labels=scales::percent_format(accuracy=1)) +
+  theme_clean() +
+  theme(axis.text.x = element_text(angle=-90, hjust=0)) +
+  labs(title = "Distribution of PAC Donations and Congress Representation",
+       subtitle = "Year {closest_state}, party in office: {anim_data %>% filter(year_cycle == closest_state) %>% slice(1) %>% pull(president_party)}",
+       x = "Party",
+       y = "Representation (%)",
+       caption = "Party") + 
+  transition_states(year, transition_length = 2, state_length = 1)
+
+animate(house_senate_anim)
+```
+
+```{r line-plot}
+ggplot(house_senate_bound, aes(x=year, y=value, color=party)) + geom_line(aes(linetype=branch)) + facet_wrap(~party) + theme_clean() + theme(axis.text.x = element_text(angle=-60, hjust=0)) + labs(title = "PAC Donations and Congress Representation Over Time", subtitle = "Trend of Donation seems to determine representation in congress", x = "Year", y = "Representation (%)", color = "Party", linetype = "Lines") + scale_y_continuous(labels = scales::percent_format(accuracy=1)) + scale_color_manual(values = c("blue", "red"))
+```
+
+
+
+
+
+

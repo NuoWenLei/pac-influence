@@ -1,0 +1,19 @@
+---
+title: "Source B"
+description: |
+  Detailed notes for Source B
+output: distill::distill_article
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+Source B was from (a Wikipedia page about Party Division in US Congress)[https://en.wikipedia.org/wiki/Party_divisions_of_United_States_Congresses].
+
+It has a table recording the party representation in US Congress from 1789 to 2020.[@wikipediaPartyDivision]
+
+
+
+
+

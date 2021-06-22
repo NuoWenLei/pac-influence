@@ -1,10 +1,32 @@
 ---
 title: "About this site"
-description: |
-  Some additional details about the website
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 ```
+
+## About Me
+
+I'm **Nuo Wen Lei** from Shanghai, currently studying as a rising Senior at Concord Academy, MA. I like tennis, anime, chicken wings, and ramen.
+
+## About the Project
+
+*Influence of Foreign-Connected PAC Donations on Representation in the US government*
+
+Political Action Committees (PAC) are organizations that raise money to elect or beat candidates. Companies from foreign countries are able to donate to candidates through PACs, so this project aims to examine how foreign-connected PAC donations influence elections and party representation in the US.
+
+## Goals
+
+* Visualize distribution of donations from countries over time
+* Examine change of US government representation along with donation amount over time
+  + x axis are different scales, so must convert to percentage before facet-wrapping
+* Determine connection between foreign-connected PAC donations of different parties and US government representation of the parties
+
+"This is Data Science"  
+~ Preceptor
+
+[Kane’s Free High School Data Science Bootcamp](https://bootcamp.davidkane.info/)
+
+
 
