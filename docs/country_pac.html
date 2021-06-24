@@ -86,17 +86,14 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </style>
 
   <!--radix_placeholder_meta_tags-->
-  <title>PAC Influence on US Politics: PAC Donations from Countries</title>
+  <title>PAC Influence on US Politics: PAC Donations Mapped by Countries</title>
 
   <meta property="description" itemprop="description" content="Visualization of amount of donations changing over time."/>
 
 
-  <!--  https://schema.org/Article -->
-  <meta property="article:published" itemprop="datePublished" content="2021-06-23"/>
-  <meta property="article:created" itemprop="dateCreated" content="2021-06-23"/>
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="PAC Influence on US Politics: PAC Donations from Countries"/>
+  <meta property="og:title" content="PAC Influence on US Politics: PAC Donations Mapped by Countries"/>
   <meta property="og:type" content="article"/>
   <meta property="og:description" content="Visualization of amount of donations changing over time."/>
   <meta property="og:locale" content="en_US"/>
@@ -104,14 +101,14 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
-  <meta property="twitter:title" content="PAC Influence on US Politics: PAC Donations from Countries"/>
+  <meta property="twitter:title" content="PAC Influence on US Politics: PAC Donations Mapped by Countries"/>
   <meta property="twitter:description" content="Visualization of amount of donations changing over time."/>
 
   <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","date","output"]}},"value":[{"type":"character","attributes":{},"value":["PAC Donations from Countries"]},{"type":"character","attributes":{},"value":["Visualization of amount of donations changing over time.\n"]},{"type":"character","attributes":{},"value":["2021-06-23"]},{"type":"character","attributes":{},"value":["distill::distill_article"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","output"]}},"value":[{"type":"character","attributes":{},"value":["PAC Donations Mapped by Countries"]},{"type":"character","attributes":{},"value":["Visualization of amount of donations changing over time.\n"]},{"type":"character","attributes":{},"value":["distill::distill_article"]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -2056,7 +2053,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"PAC Donations from Countries","description":"Visualization of amount of donations changing over time.","authors":[],"publishedDate":"2021-06-23T00:00:00.000+00:00"}
+{"title":"PAC Donations Mapped by Countries","description":"Visualization of amount of donations changing over time.","authors":[]}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -2069,8 +2066,17 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <div class="nav-right">
 <a href="index.html">Home</a>
 <a href="about.html">About</a>
-<a href="country_pac.html">PAC by Countries</a>
-<a href="donation_party_plot.html">Donations and Party Division</a>
+<div class="nav-dropdown">
+<button class="nav-dropbtn">
+PAC by Area
+ 
+<span class="down-arrow">&#x25BE;</span>
+</button>
+<div class="nav-dropdown-content">
+<a href="country_pac.html">Countries</a>
+<a href="region_pac.html">Regions</a>
+</div>
+</div>
 <div class="nav-dropdown">
 <button class="nav-dropbtn">
 Sources
@@ -2091,7 +2097,7 @@ Sources
 <!--/radix_placeholder_site_before_body-->
 
 <div class="d-title">
-<h1>PAC Donations from Countries</h1>
+<h1>PAC Donations Mapped by Countries</h1>
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
 <p><p>Visualization of amount of donations changing over time.</p></p>
@@ -2102,17 +2108,12 @@ Sources
 <div class="layout-chunk" data-layout="l-body">
 
 </div>
-<div class="layout-chunk" data-layout="l-body">
-
-</div>
-<h2 id="region-plot">Region Plot</h2>
-<div class="layout-chunk" data-layout="l-body">
-<p><img src="country_pac_files/figure-html5/region-plot-1.gif" /><!-- --></p>
-</div>
 <h2 id="country-plot">Country Plot</h2>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="country_pac_files/figure-html5/country-plot-1.gif" /><!-- --></p>
 </div>
+<p>Find a country you know!</p>
+<p>Overall, it seems that whenever there is a change of party in office, there is also a drastic change in amount donated to that party.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->

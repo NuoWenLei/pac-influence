@@ -10,7 +10,7 @@ bibliography: bibliography.bib
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-Source A was from (OpenSecrets Foreign-Connected PACs)[https://www.opensecrets.org/political-action-committees-pacs/foreign-connected-pacs/2020].
+Source A was from [OpenSecrets Foreign-Connected PACs](https://www.opensecrets.org/political-action-committees-pacs/foreign-connected-pacs/2020).
 
 It lists all the foreign-connected company donations for PACs from 2000 to 2020.[@opensecretsPACs]
 

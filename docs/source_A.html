@@ -2068,8 +2068,17 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <div class="nav-right">
 <a href="index.html">Home</a>
 <a href="about.html">About</a>
-<a href="country_pac.html">PAC by Countries</a>
-<a href="donation_party_plot.html">Donations and Party Division</a>
+<div class="nav-dropdown">
+<button class="nav-dropbtn">
+PAC by Area
+ 
+<span class="down-arrow">&#x25BE;</span>
+</button>
+<div class="nav-dropdown-content">
+<a href="country_pac.html">Countries</a>
+<a href="region_pac.html">Regions</a>
+</div>
+</div>
 <div class="nav-dropdown">
 <button class="nav-dropbtn">
 Sources
@@ -2098,7 +2107,7 @@ Sources
 
 
 <div class="d-article">
-<p>Source A was from (OpenSecrets Foreign-Connected PACs)[<a href="https://www.opensecrets.org/political-action-committees-pacs/foreign-connected-pacs/2020" class="uri">https://www.opensecrets.org/political-action-committees-pacs/foreign-connected-pacs/2020</a>].</p>
+<p>Source A was from <a href="https://www.opensecrets.org/political-action-committees-pacs/foreign-connected-pacs/2020">OpenSecrets Foreign-Connected PACs</a>.</p>
 <p>It lists all the foreign-connected company donations for PACs from 2000 to 2020.<span class="citation" data-cites="opensecretsPACs">(<a href="#ref-opensecretsPACs" role="doc-biblioref"><em>Foreign-Connected PACs</em> 2020</a>)</span></p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">

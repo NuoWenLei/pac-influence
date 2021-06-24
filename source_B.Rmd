@@ -9,7 +9,7 @@ output: distill::distill_article
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-Source B was from (a Wikipedia page about Party Division in US Congress)[https://en.wikipedia.org/wiki/Party_divisions_of_United_States_Congresses].
+Source B was from [a Wikipedia page about Party Division in US Congress](https://en.wikipedia.org/wiki/Party_divisions_of_United_States_Congresses).
 
 It has a table recording the party representation in US Congress from 1789 to 2020.[@wikipediaPartyDivision]
 

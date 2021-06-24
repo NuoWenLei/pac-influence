@@ -1,0 +1,89 @@
+---
+title: "PAC Donations Mapped by Regions"
+description: |
+  Visualization of amount of donations changing over time.
+output: distill::distill_article
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+
+library(tidyverse)
+library(gganimate)
+library(ggthemes)
+```
+
+
+```{r prep-region, echo=FALSE}
+
+# Get and format data as needed
+csv_data = read_csv("combined_pac.csv")
+
+year_cycles = seq(2000, 2020, by=2)
+
+region_list = list()
+
+map_csv = read_csv("country_region_map.csv")
+
+for (cnty in csv_data$country){
+  region_list = append(region_list, map_csv %>% filter(Country == cnty) %>% pull(Region))
+}
+
+csv_data$region = as.character(region_list)
+
+csv_data = csv_data %>% group_by(region, year_cycle) %>%
+  summarize(dems_sum = sum(dems_sum),
+            repubs_sum = sum(repubs_sum),
+            total_sum = sum(total_sum),
+            .groups="drop")
+
+
+
+for (reg in map_csv$Region %>% unique()){
+  
+  for (year in year_cycles){
+    if (!(reg %in% (csv_data %>% filter(year_cycle==year))$region)){
+      csv_data = csv_data %>% add_row(year_cycle=year,
+                                      dems_sum=0.0,
+                                      repubs_sum=0.0,
+                                      total_sum=0.0,
+                                      region=reg)
+    }
+  }
+}
+
+anim_data <- csv_data %>% pivot_longer(cols=c(dems_sum, repubs_sum), names_to="party", values_to="amount") %>% mutate(president_party = case_when(
+  (year_cycle >= 2000 & year_cycle < 2008) ~ "Republican",
+  (year_cycle >= 2008 & year_cycle < 2016) ~ "Democrat",
+  (year_cycle >= 2016 & year_cycle < 2020) ~ "Republican",
+  year_cycle == 2020 ~ "Democrat"
+))
+
+
+```
+
+
+## Region Plot
+
+```{r region-plot}
+
+
+anim <- ggplot(data=anim_data, mapping=aes(x=region, y=amount/100000, fill=party)) +
+  geom_col(position="dodge") +
+  labs(title = "Region PAC Donations by Party",
+       subtitle="Year {closest_state}, party in office: {anim_data %>% filter(year_cycle == closest_state) %>% slice(1) %>% pull(president_party)}",
+       x = "Region",
+       y = "Donation Amount (by $100,000)",
+       fill = "Party",
+       caption = "OpenSecrets (2020)") +
+  transition_states(year_cycle, transition_length = 2, state_length = 1) +
+  theme_classic() +
+  theme(axis.text.x=element_text(angle = -90, hjust=0)) +
+  scale_fill_manual(values=c("blue", "red"),
+                    labels=c("Democrat", "Republican"))
+animate(anim, nframes=200)
+```
+
+Europe donates much more than other regions to US Political Action Committees.
+
+Overall, it seems that whenever there is a change of party in office, there is also a drastic change in amount donated to that party.

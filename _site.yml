@@ -9,10 +9,12 @@ navbar:
       href: index.html
     - text: "About"
       href: about.html
-    - text: "PAC by Countries"
-      href: country_pac.html
-    - text: "Donations and Party Division"
-      href: donation_party_plot.html
+    - text: "PAC by Area"
+      menu:
+        - text: "Countries"
+          href: country_pac.html
+        - text: "Regions"
+          href: region_pac.html
     - text: "Sources"
       menu:
         - text: "OpenSecrets"

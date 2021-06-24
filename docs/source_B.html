@@ -2066,8 +2066,17 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <div class="nav-right">
 <a href="index.html">Home</a>
 <a href="about.html">About</a>
-<a href="country_pac.html">PAC by Countries</a>
-<a href="donation_party_plot.html">Donations and Party Division</a>
+<div class="nav-dropdown">
+<button class="nav-dropbtn">
+PAC by Area
+ 
+<span class="down-arrow">&#x25BE;</span>
+</button>
+<div class="nav-dropdown-content">
+<a href="country_pac.html">Countries</a>
+<a href="region_pac.html">Regions</a>
+</div>
+</div>
 <div class="nav-dropdown">
 <button class="nav-dropbtn">
 Sources
@@ -2096,7 +2105,7 @@ Sources
 
 
 <div class="d-article">
-<p>Source B was from (a Wikipedia page about Party Division in US Congress)[<a href="https://en.wikipedia.org/wiki/Party_divisions_of_United_States_Congresses" class="uri">https://en.wikipedia.org/wiki/Party_divisions_of_United_States_Congresses</a>].</p>
+<p>Source B was from <a href="https://en.wikipedia.org/wiki/Party_divisions_of_United_States_Congresses">a Wikipedia page about Party Division in US Congress</a>.</p>
 <p>It has a table recording the party representation in US Congress from 1789 to 2020.<span class="citation" data-cites="wikipediaPartyDivision">[@wikipediaPartyDivision]</span></p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
