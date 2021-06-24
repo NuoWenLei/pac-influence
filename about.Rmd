@@ -8,7 +8,7 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ## About Me
 
-I'm [**Nuo Wen Lei**](https://github.com/NuoWenLei) from Shanghai, currently studying as a rising Senior at Concord Academy, MA. I like tennis, anime, chicken wings, and ramen.
+I'm [**Nuo Wen Lei**](https://github.com/NuoWenLei) from Shanghai, currently studying as a rising Senior at Concord Academy, MA with an interest in Computer Science, Data Science, and Behavioral Sciences. I like to play tennis, watch anime, and eat chicken wings and ramen.
 
 ## About the Project
 

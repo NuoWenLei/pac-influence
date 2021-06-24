@@ -4,8 +4,8 @@
       "path": "about.html",
       "title": "About this site",
       "author": [],
-      "contents": "\nAbout Me\nI’m Nuo Wen Lei from Shanghai, currently studying as a rising Senior at Concord Academy, MA. I like tennis, anime, chicken wings, and ramen.\nAbout the Project\nInfluence of Foreign-Connected PAC Donations on Representation in the US government\nPolitical Action Committees (PAC) are organizations that raise money to elect or beat candidates. Companies from foreign countries are able to donate to candidates through PACs, so this project aims to examine how foreign-connected PAC donations influence elections and party representation in the US.\nGoals\nVisualize distribution of donations from countries over time\nExamine change of US government representation along with donation amount over time\nx axis are different scales, so must convert to percentage before facet-wrapping\n\nDetermine connection between foreign-connected PAC donations of different parties and US government representation of the parties\n“This is Data Science”\nPreceptor\n\nKane’s Free High School Data Science Bootcamp\n\n\n\n",
-      "last_modified": "2021-06-24T08:40:30+08:00"
+      "contents": "\nAbout Me\nI’m Nuo Wen Lei from Shanghai, currently studying as a rising Senior at Concord Academy, MA with an interest in Computer Science, Data Science, and Behavioral Sciences. I like to play tennis, watch anime, and eat chicken wings and ramen.\nAbout the Project\nInfluence of Foreign-Connected PAC Donations on Representation in the US government\nPolitical Action Committees (PAC) are organizations that raise money to elect or beat candidates. Companies from foreign countries are able to donate to candidates through PACs, so this project aims to examine how foreign-connected PAC donations influence elections and party representation in the US.\nGoals\nVisualize distribution of donations from countries over time\nExamine change of US government representation along with donation amount over time\nx axis are different scales, so must convert to percentage before facet-wrapping\n\nDetermine connection between foreign-connected PAC donations of different parties and US government representation of the parties\n“This is Data Science”\nPreceptor\n\nKane’s Free High School Data Science Bootcamp\n\n\n\n",
+      "last_modified": "2021-06-24T09:11:12+08:00"
     },
     {
       "path": "country_pac.html",
@@ -13,7 +13,7 @@
       "description": "Visualization of amount of donations changing over time.\n",
       "author": [],
       "contents": "\n\n\n\nCountry Plot\n\n\n\nFind a country you know!\nOverall, it seems that whenever there is a change of party in office, there is also a drastic change in amount donated to that party.\n\n\n\n",
-      "last_modified": "2021-06-24T08:41:22+08:00"
+      "last_modified": "2021-06-24T09:12:09+08:00"
     },
     {
       "path": "index.html",
@@ -21,7 +21,7 @@
       "description": "This website examines the influence of foreign-connected PAC (Political Action Comittee) donations on US politics and elections.\n",
       "author": [],
       "contents": "\nOverview of PAC Influence on US Congress Representation\n\n\n\n\n\n\nFrom the plots, it seems that the party representation in Congress almost parallels the trend of foreign-connected PAC donations.\nIn fact, looking closely, the trend of donations seem the predict the representation as the changes in donations happen earlier than the changes in representation.\nAdditionally, it seems that Republicans usually receive more PAC donations than Democrats, but the percentage of donations of the Democrats seem to be growing closer to that of Republicans in recent years.\n\n\n\n",
-      "last_modified": "2021-06-24T08:41:54+08:00"
+      "last_modified": "2021-06-24T09:12:41+08:00"
     },
     {
       "path": "region_pac.html",
@@ -29,7 +29,7 @@
       "description": "Visualization of amount of donations changing over time.\n",
       "author": [],
       "contents": "\n\n\n\nRegion Plot\n\n\n\nEurope donates much more than other regions to US Political Action Committees.\nOverall, it seems that whenever there is a change of party in office, there is also a drastic change in amount donated to that party.\n\n\n\n",
-      "last_modified": "2021-06-24T08:42:33+08:00"
+      "last_modified": "2021-06-24T09:13:20+08:00"
     },
     {
       "path": "source_A.html",
@@ -37,7 +37,7 @@
       "description": "Detailed notes for Source A\n",
       "author": [],
       "contents": "\nSource A was from OpenSecrets Foreign-Connected PACs.\nIt lists all the foreign-connected company donations for PACs from 2000 to 2020.(Foreign-Connected PACs 2020)\n\n\n\nForeign-Connected PACs. 2020.\n\n\n\n\n",
-      "last_modified": "2021-06-24T08:42:33+08:00"
+      "last_modified": "2021-06-24T09:13:20+08:00"
     },
     {
       "path": "source_B.html",
@@ -45,7 +45,7 @@
       "description": "Detailed notes for Source B\n",
       "author": [],
       "contents": "\nSource B was from a Wikipedia page about Party Division in US Congress.\nIt has a table recording the party representation in US Congress from 1789 to 2020.[@wikipediaPartyDivision]\n\n\n\n",
-      "last_modified": "2021-06-24T08:42:34+08:00"
+      "last_modified": "2021-06-24T09:13:21+08:00"
     }
   ],
   "collections": []
