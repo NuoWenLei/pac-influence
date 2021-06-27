@@ -14,6 +14,7 @@ library(gganimate)
 library(ggthemes)
 library(rmarkdown)
 
+
 # Learn more about creating websites with Distill at:
 # https://rstudio.github.io/distill/website.html
 
@@ -48,6 +49,10 @@ house_senate_bound = bind_rows(house_senate_csv, house_senate_csv_1) %>%
   mutate(party=if_else(str_detect(position, "repub"),
                        "Republican", "Democrat")) 
 
+house_donation_correlation = cor(house_senate_bound %>% filter(position == "repub_total") %>% pull(value), house_senate_bound %>% filter(position == "republican_house") %>% pull(value))
+
+senate_donation_correlation = cor(house_senate_bound %>% filter(position == "repub_total") %>% pull(value), house_senate_bound %>% filter(position == "republican_senate") %>% pull(value))
+
 ```
 
 ## Overview of PAC Influence on US Congress Representation
@@ -76,6 +81,12 @@ animate(house_senate_anim)
 ggplot(house_senate_bound, aes(x=year, y=value, color=party)) + geom_line(aes(linetype=branch)) + facet_wrap(~party) + theme_clean() + theme(axis.text.x = element_text(angle=-60, hjust=0)) + labs(title = "PAC Donations and Congress Representation Over Time", subtitle = "Trend of Donation seems to determine representation in congress", x = "Year", y = "Representation (%)", color = "Party", linetype = "Lines",
        caption = "OpenSecrets (2020)") + scale_y_continuous(labels = scales::percent_format(accuracy=1)) + scale_color_manual(values = c("blue", "red"))
 ```
+
+Correlation Between House of Representative and Donation Percentages:
+**`r sprintf("%.3f", house_donation_correlation)`**
+
+Correlation Between House of Representative and Donation Percentages:
+**`r sprintf("%.3f", senate_donation_correlation)`**
 
 From the plots, it seems that the party representation in Congress almost parallels the trend of foreign-connected PAC donations.
 
