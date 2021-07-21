@@ -4,9 +4,9 @@ library(rvest)
 year_cycles = seq(2000, 2020, by=2)
 base_url = "https://www.opensecrets.org/political-action-committees-pacs/foreign-connected-pacs/"
 csv_data = NULL
-for (year in year_cycles){
-  print(year)
-  raw_data = read_html(paste0(base_url, year)) %>%
+for (year_num in year_cycles){
+  print(year_num)
+  raw_data = read_html(paste0(base_url, year_num)) %>%
     html_element("table.DataTable-Partial") %>%
     html_table() %>%
     rename(pac = `PAC Name (Affiliate)`,
@@ -20,15 +20,21 @@ for (year in year_cycles){
            repubs = parse_number(gsub("[$,]", "", repubs))) %>% 
     select(country, total, dems, repubs) %>% 
     group_by(country) %>% 
-    summarize(dems_sum = mean(dems),
-              repubs_sum = mean(repubs),
-              total_sum = mean(total),
+    summarize(dems_sum = sum(dems),
+              repubs_sum = sum(repubs),
+              total_sum = sum(total),
               .groups="drop") %>% 
-    mutate(year_cycle=year)
+    mutate(year = year_num)
+  
+  write_csv(raw_data, paste0("data/foreign_pac_data/year_", year_num, ".csv"))
   
   csv_data = bind_rows(csv_data, raw_data)
 }
 
-write_csv(csv_data, file="combined_pac.csv")
+write_csv(csv_data, file="data/foreign_pac_data/full_data.csv")
+
+write_csv(csv_data, file="data/foreign_pac_data/clean_data.csv")
+
+
 
 

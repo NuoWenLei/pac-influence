@@ -36,6 +36,7 @@ house_senate_csv = csv_data %>%
   pivot_longer(cols=c(dem_total, repub_total), names_to="position", values_to="value") %>% 
   mutate(branch="Donations") %>% 
   rename(year=year_cycle)
+
 house_senate_csv_1 = read_csv("house_senate.csv") %>%
   mutate(democratic_senate=(democratic_senate_1/(democratic_senate_1 + republican_senate_1)),
          republican_senate=(republican_senate_1/(democratic_senate_1 + republican_senate_1)),
@@ -85,7 +86,7 @@ ggplot(house_senate_bound, aes(x=year, y=value, color=party)) + geom_line(aes(li
 Correlation Between House of Representative and Donation Percentages:
 **`r sprintf("%.3f", house_donation_correlation)`**
 
-Correlation Between House of Representative and Donation Percentages:
+Correlation Between Senate and Donation Percentages:
 **`r sprintf("%.3f", senate_donation_correlation)`**
 
 From the plots, it seems that the party representation in Congress almost parallels the trend of foreign-connected PAC donations.
